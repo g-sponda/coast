@@ -20,6 +20,8 @@ class DailyDigitalCurrency(Base):
     volume = Column(Float(precision=8))
     market_cap = Column(Float(precision=8))
     date = Column(DateTime)
+    year = Column(Integer)
+    iso_week = Column(Integer)
 
     def __init__(self, name, open, high, low, close, volume, market_cap, date):
         self.name = name
@@ -30,6 +32,8 @@ class DailyDigitalCurrency(Base):
         self.volume = volume
         self.market_cap = market_cap
         self.date = date
+        self.year = date.year
+        self.iso_week = date.isocalendar()[1]
 
     def __init__(self, kwargs):
         self.name = kwargs.get("name")
@@ -39,7 +43,10 @@ class DailyDigitalCurrency(Base):
         self.close = kwargs.get("close")
         self.volume = kwargs.get("volume")
         self.market_cap = kwargs.get("market_cap")
-        self.date = kwargs.get("date")
+        date = kwargs.get("date")
+        self.date = date
+        self.year = date.year
+        self.iso_week = date.isocalendar()[1]
 
 
 def create_tables():
