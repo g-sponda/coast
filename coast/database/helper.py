@@ -5,15 +5,27 @@ from datetime import datetime
 LOGGER = get_logger()
 
 
-def save_list(json_data):
+def save_list(dict_data):
+    """
+    Method to save dict_data in Database
+    @param dict_data: list of objects from `Time Series (Digital Currency Daily)`. Example:
+    [{'close': '479.02343370',
+    'date': '2014-04-01',
+    'high': '491.26727280',
+    'low': '468.48010552',
+    'market_cap': '30128027.04467774',
+    'open': '468.48010552',
+    'volume': '62894.68306786'},]
+    @return: True if success
+    """
     latest_date = get_latest_date()
     # In case we don't have any data in database
     if latest_date is None:
         latest_date = datetime.min
-        order_json_data = sorted(json_data, key=lambda data: data["date"])
-        json_data = order_json_data
+        order_dict_data = sorted(dict_data, key=lambda data: data["date"])
+        dict_data = order_dict_data
 
-    for data in json_data:
+    for data in dict_data:
         if data["date"] <= latest_date:
             LOGGER.info(
                 "The data from date {} is already in Database".format(data["date"])
