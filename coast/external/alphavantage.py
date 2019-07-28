@@ -1,5 +1,6 @@
 import requests
 from coast.settings import *
+from datetime import datetime
 
 
 LOGGER = get_logger()
@@ -27,6 +28,8 @@ def collect_json_api_data():
 
 def transform_data_daily_digital_currency(json_data):
     """
+    Method to collect the only data we need. This method collect all subindex '#a'
+
     @param json_data: the json response from alphavantage API
     @return: list of objects from `Time Series (Digital Currency Daily)`. Example:
     [{'close': '479.02343370',
@@ -53,7 +56,7 @@ def transform_data_daily_digital_currency(json_data):
                 "close": v["4a. close (USD)"],
                 "volume": v["5. volume"],
                 "market_cap": v["6. market cap (USD)"],
-                "date": date,
+                "date": datetime.strptime(date, "%Y-%m-%d"),
             }
         )
 
