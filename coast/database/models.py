@@ -17,7 +17,6 @@ class DailyDigitalCurrency(Base):
     """
     Model class for SQLite
     """
-
     __tablename__ = "DAILY_DIGITAL_CURRENCY"
     id = Column(Integer, primary_key=True)
     open = Column(Float(precision=8))
