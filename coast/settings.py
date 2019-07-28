@@ -1,7 +1,15 @@
 import logging
 from pythonjsonlogger import jsonlogger
 from configparser import ConfigParser
-from os import path, getenv
+from os import path
+
+
+def get_configurations():
+    configuration = ConfigParser()
+    APPLICATION_ROOT_PATH = path.abspath(path.join(path.dirname(__file__), ".."))
+
+    configuration.read(path.join(APPLICATION_ROOT_PATH, "config", "default.toml"))
+    return configuration
 
 
 URL = "https://www.alphavantage.co/query?function={api_function}&symbol={symbol}&market={market}&apikey={api_key}"
@@ -24,11 +32,3 @@ def get_logger():
     logger.addHandler(logHandler)
     logger.setLevel(getattr(logging, configurations.get("logging", "level")))
     return logger
-
-
-def get_configurations():
-    configuration = ConfigParser()
-    APPLICATION_ROOT_PATH = path.abspath(path.join(path.dirname(__file__), ".."))
-
-    configuration.read(path.join(APPLICATION_ROOT_PATH, "config", "default.toml"))
-    return configuration
