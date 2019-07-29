@@ -64,7 +64,7 @@ docker run -itd -p 5000:5000 --name coast coast:latest
 
 ### Accessing the endpoint
 
-You can see the results the follow addrress: 127.0.0.0:5000/maxspan
+You can see the results the follow addrress: http://127.0.0.0:5000/maxspan
 
 ## Running the tests
 
