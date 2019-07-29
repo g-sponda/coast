@@ -1,5 +1,9 @@
 .vscode/
 
+.gitignore
+README.md
+tests/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

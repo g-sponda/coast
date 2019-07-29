@@ -4,46 +4,78 @@ The purpose of this project is to collect some data provided by www.alphavantage
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This project was written in Python3.7. 
 
-```
-Give examples
-```
+So you will need Python3.7, pip(python3.7) and SQLite3 installed in your machine.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+If you have all prerequisites, you will be able to install the dependencies or if you prefer to use Docker read the next session.
 
-Say what the step will be
+First enter in the directory of the project.
 
-```
-Give the example
-```
-
-And repeat
+To install the dependencies execute:
 
 ```
-until finished
+pip install -r requirementes.txt
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+After that, open the default.toml and modify the level log which you prefer and add the token of www.alphavantage.co.
+
+The file you will be something like:
+
+```
+[logging]
+level = "DEBUG"
+
+[api]
+token = "<YOUR_TOKEN>"
+```
+
+If you would like to run migrations, you can set an enviroment variable with value "yes"
+
+```
+export RUN_MIGRATIONS="yes"
+```
+
+If you don't need or don't want to reset the tables, you don't need to set this variable, the sqlite database with this project already have the necessary tables.
+
+Now, you will be able to execute the project. Just execute:
+
+```
+python coast.py
+```
+
+### Docker
+
+If you prefer to run dockerized project, follow the steps bellow:
+
+First build the image:
+
+```
+docker build -t coast .
+```
+
+```
+docker run -itd -p 5000:5000 --name coast coast:latest
+```
+
+### Accessing the endpoint
+
+You can see the results the follow addrress: 127.0.0.0:5000/maxspan
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+TODO
 
 ## Built With
 
 * [Python 3.7](https://docs.python.org/3.7/) - The Language used
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Micro framework web
+* [SQLAlchemy](https://docs.sqlalchemy.org/en/13/) - Python SQL toolkit
+* [Requests](https://2.python-requests.org/en/master/) - Non-GMO HTTP library for Python
 
 ## Authors
 
