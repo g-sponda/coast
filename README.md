@@ -68,7 +68,17 @@ You can see the results the follow addrress: http://127.0.0.1:5000/maxspan
 
 ## Running the tests
 
-TODO
+To run the tests is pretty simple, you just need to be sure you already install all depencies executing:
+
+```
+pip install -r requirementes.txt
+```
+
+Now to run the tests execute:
+
+```
+py.test tests/
+```
 
 ## Built With
 

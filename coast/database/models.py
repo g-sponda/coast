@@ -17,6 +17,7 @@ class DailyDigitalCurrency(Base):
     """
     Model class for SQLite
     """
+
     __tablename__ = "DAILY_DIGITAL_CURRENCY"
     id = Column(Integer, primary_key=True)
     open = Column(Float(precision=8))
@@ -29,8 +30,7 @@ class DailyDigitalCurrency(Base):
     year = Column(Integer)
     iso_week = Column(Integer)
 
-    def __init__(self, name, open, high, low, close, volume, market_cap, date):
-        self.name = name
+    def __init__(self, open, high, low, close, volume, market_cap, date):
         self.open = open
         self.high = high
         self.low = low
@@ -43,17 +43,16 @@ class DailyDigitalCurrency(Base):
 
     def __init__(self, dict_values):
         """
-        @param dict_values: dictionary with keys: `name`, `open`, `high`, `close`, `volume`, `market_cap`, `date`
+        @param dict_values: dictionary with keys: `open`, `high`, `close`, `volume`, `market_cap`, `date`
         """
         try:
-            self.name = dict_values.get("name")
-            self.open = dict_values.get("open")
-            self.high = dict_values.get("high")
-            self.low = dict_values.get("low")
-            self.close = dict_values.get("close")
-            self.volume = dict_values.get("volume")
-            self.market_cap = dict_values.get("market_cap")
-            date = dict_values.get("date")
+            self.open = dict_values["open"]
+            self.high = dict_values["high"]
+            self.low = dict_values["low"]
+            self.close = dict_values["close"]
+            self.volume = dict_values["volume"]
+            self.market_cap = dict_values["market_cap"]
+            date = dict_values["date"]
             self.date = date
             self.year = date.year
             self.iso_week = date.isocalendar()[1]
