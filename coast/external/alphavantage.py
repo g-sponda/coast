@@ -18,12 +18,14 @@ def collect_json_api_data():
     try:
         LOGGER.debug("Request the alphavantage API")
         response = requests.get(url)
-        response_json = response.json()
+
+        if response.ok:
+            return response.json()
+        else:
+            return None
     except Exception:
         LOGGER.error("Error to collect the data from API")
         raise
-
-    return response_json
 
 
 def transform_data_daily_digital_currency(json_data):
