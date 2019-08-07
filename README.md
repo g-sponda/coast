@@ -19,7 +19,7 @@ First enter in the directory of the project.
 To install the dependencies execute:
 
 ```
-pip install -r requirementes.txt
+pip install -r requirements.txt
 ```
 
 After that, open the default.toml and modify the level log which you prefer and add the token of www.alphavantage.co.
@@ -71,7 +71,7 @@ You can see the results the follow addrress: http://127.0.0.1:5000/maxspan
 To run the tests is pretty simple, you just need to be sure you already install all depencies executing:
 
 ```
-pip install -r requirementes.txt
+pip install -r requirements.txt
 ```
 
 Now to run the tests execute:
